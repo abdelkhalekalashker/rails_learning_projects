@@ -1,0 +1,7 @@
+<h1> The target user </h1>
+<ul>
+<%= @user.name%><br>
+<%= @user.email%>
+</ul>
+<%= link_to "DELETE" ,user_path(@user),  method: :delete %>
+<%= link_to "EDIT" , edit_user_path(@user) %>
