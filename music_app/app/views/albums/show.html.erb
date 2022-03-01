@@ -1,0 +1,15 @@
+<h1> Welcome to <%= @album.name.capitalize! %></h1>
+<% text = "Delete#{@album.name.upcase}" %>
+<a  href="<%= edit_album_url(@album) %>">Edit <%= @album.name %></a>
+<% if @album.tracks.length > 0 %>
+    <% @album.tracks.each do |track| %>
+        <a href="<%= track_url(track) %>" ><%= track.title %></a>
+    <% end %>
+<% else %>
+    <h3>there is no tracks in this album for now</h3>
+    <% end %>
+<form action="<%= album_url(@album) %>" method="POST" >
+    <input type="hidden" name="_method" value="DELETE" >
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+    <input type="submit" value=<%= text %> >
+</form>

@@ -1,0 +1,12 @@
+<h1>hello from index</h1>
+<% @albums.each do |album| %>
+<label for="name" >album name</label><br>
+    <a id="name" href="<%= album_url(album) %>"><%= album.name %></a>
+    <br>
+    <a href="<%= edit_album_url(album) %>">Edit <%= album.name %></a>
+    <% @new = album.band_id %>
+    <br>
+<% end %>
+<br>
+
+    <a href="<%= new_band_album_url(@new) %>">new album</a>

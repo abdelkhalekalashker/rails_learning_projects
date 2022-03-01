@@ -1,0 +1,21 @@
+<h1>hello <%= @band.name %> this is your show page</h1>
+<form action="<%= band_url(@band) %>" method="POST" >
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+    <input type="submit" value="Destroy Band" >
+</form>
+
+<% if @band.albums.length > 0 %>
+  <ul class='main-list'>
+  <% @band.albums.each do |album| %>
+    <li><a href="<%= album_url(album) %>"><p><%= album.name %></p></a></li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>This band has no albums... yet!</p>
+<%end %>
+
+<a class='button' href="<%= new_band_album_url(@band) %>">New album</a>
+<h3><a href = "<%= edit_band_url(@band) %>" > Edit Band </h3>
+<h3><a href = "<%= new_band_url %>" > New Band </h3>
+<h3><a href = "<%= bands_url %>" > All Bands </h3>
