@@ -1,0 +1,17 @@
+<h3 class="text-center" ><%= pluralize(@posts.count , 'job') %></h3>
+<% @posts.each do |post| %>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>role</th>
+                <th>experience</th>
+                <th>description</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <td><%= post.role %></td>
+            <td><%= post.experience %></td>
+            <td><%= post.description %></td>
+        </tbody>
+    </table>
+<% end %>
