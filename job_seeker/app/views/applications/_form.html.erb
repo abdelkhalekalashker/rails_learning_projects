@@ -1,0 +1,7 @@
+<%= form_with(model: [post ,post.applications.build ]) do |f| %>
+    <div>
+        <%= f.rich_text_area :body %>
+        <%= f.submit "apply"  , class: "btn btn-primary" %>
+    </div>
+
+<% end %>
