@@ -14,13 +14,17 @@
   <strong>Description:</strong>
   <%= @post.description %>
 </p>
-<% if current_user.admin? %>
+
+<% if current_user && current_user.admin? %>
   <%= link_to 'Edit', edit_post_path(@post) %> 
 <% end %>
+
 <%= link_to 'Back', posts_path %>
-  <%= render 'applications/form', post:@post %>
+  
+<%= render 'applications/form', post:@post %>
 
 <% @applications.each do |application| %>
-   <%= application.body.to_plain_text %>
-   <%= application.post.user.email %>
-   <% end %>
+   <h1><%= application.body.to_plain_text  %></h1>
+    <%= application.status  %>
+   <%= button_to 'See application', post_application_path([@post , application])  %>
+<% end %>

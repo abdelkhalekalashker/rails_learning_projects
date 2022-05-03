@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   end
   get 'search' , to:'search#index'
   root "posts#index"
-
   resources :posts do 
     resources :applications
   end

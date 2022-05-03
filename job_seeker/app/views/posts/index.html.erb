@@ -20,11 +20,11 @@
         <td><%= post.description %></td>
         <td><%= link_to 'Show', post , class: 'btn btn-primary' %></td>
 
-        <% if current_user.admin? %>
+        <% if current_user &&  current_user.admin? %>
           <td><%= link_to 'Edit', edit_post_path(post) , class: 'btn btn-warning' %></td>
           <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %></td>
         <% end %>
-        
+
       </tr>
     <% end %>
   </tbody>

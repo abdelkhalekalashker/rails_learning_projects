@@ -17,9 +17,10 @@ class ApplicationsController < ApplicationController
     end
 
     def show
-      @application = Application.find(params[:id])
+      @post = Post.find(params[:post_id])
+      @application = @post.applications.find(params[:id])
       if current_user.admin?
-        @application.status = "seen"
+        @application.update(status:"seen")
       end
     end
 
@@ -37,6 +38,6 @@ class ApplicationsController < ApplicationController
 
     private
     def application_params
-        params.require(:application).permit(:body)
+        params.require(:application).permit(:body,:post)
     end
 end

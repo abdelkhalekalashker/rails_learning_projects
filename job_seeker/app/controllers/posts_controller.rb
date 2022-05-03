@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    if current_user.admin?
+    if current_user && current_user.admin?
       @post = Post.new
     end
   end
