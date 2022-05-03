@@ -14,8 +14,13 @@
   <strong>Description:</strong>
   <%= @post.description %>
 </p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
+<% if current_user.admin? %>
+  <%= link_to 'Edit', edit_post_path(@post) %> 
+<% end %>
 <%= link_to 'Back', posts_path %>
   <%= render 'applications/form', post:@post %>
 
+<% @applications.each do |application| %>
+   <%= application.body.to_plain_text %>
+   <%= application.post.user.email %>
+   <% end %>

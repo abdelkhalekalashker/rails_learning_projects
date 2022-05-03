@@ -18,15 +18,21 @@ class ApplicationsController < ApplicationController
 
     def show
       @application = Application.find(params[:id])
-      @application.status = "seen"
-      
+      if current_user.admin?
+        @application.status = "seen"
+      end
     end
 
     def destroy
+      if ! current_user.admin?
         @post = Post.find(params[:post_id])
         @application = @post.applications.find(params[:id])
         @application.destroy
         redirect_to post_path(@post)
+      end
+    end
+
+    def index
     end
 
     private
