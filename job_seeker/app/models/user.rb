@@ -6,4 +6,13 @@ class User < ApplicationRecord
 
          has_many :posts, dependent: :destroy
          has_many :applications ,dependent: :destroy
+
+         enum role:[:user, :admin]
+         after_initialize :set_default_role
+
+         private
+
+         def set_default_role
+            self.role ||= :user 
+         end
 end

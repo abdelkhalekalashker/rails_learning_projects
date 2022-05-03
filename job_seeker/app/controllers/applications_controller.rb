@@ -16,6 +16,12 @@ class ApplicationsController < ApplicationController
 
     end
 
+    def show
+      @application = Application.find(params[:id])
+      @application.status = "seen"
+      
+    end
+
     def destroy
         @post = Post.find(params[:post_id])
         @application = @post.applications.find(params[:id])
